@@ -1,0 +1,248 @@
+/* Box sizing rules and reset*/
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"],
+li {
+	list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+html {
+	font-family: "Montserrat", sans-serif;
+	/* resetting font size to 10px makes rem math much easier*/
+	font-size: 10px;
+	box-sizing: border-box;
+}
+/* Set section heading font*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Antonio", sans-serif;
+	font-size: 4rem;
+}
+/* Set core body defaults */
+body {
+	min-height: 100vh;
+	text-rendering: optimizeSpeed;
+	line-height: 1.5;
+}
+P,
+li {
+	font-size: 1.6rem;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+a {
+	text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+	max-width: 100%;
+	display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+/* ########## END GLOBAL ########## */
+/* ########## BUTTON  ########## */
+.push-btn {
+	background: hsl(340deg, 100%, 32%);
+	border-radius: 12px;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline-offset: 4px;
+	position: relative;
+	width: 150px;
+	height: 120px;
+}
+.push-btn:active .front {
+	transform: translateY(-2px);
+}
+.push-btn:focus:not(:focus-visible) {
+	outline: none;
+}
+
+// .front {
+// 	display: block;
+// 	padding: 42px 42px;
+// 	border-radius: 12px;
+// 	font-size: 3rem;
+// 	font-weight: bold;
+// 	background: hsl(345deg, 100%, 47%);
+// 	color: white;
+// 	transform: translateY(-7px);
+// }
+// BUTTON HOVE STATES
+.front {
+	will-change: transform;
+	transition: transform 200ms;
+}
+.push-btn:hover .front {
+	transform: translateY(-8px);
+}
+.push-btn:active .front {
+	transform: translateY(-2px);
+}
+// BUTTON BEZIER CURVES
+.front {
+	transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+
+.push-btn:hover .front {
+	transform: translateY(-6px);
+	transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+
+.push-btn:active .front {
+	transform: translateY(-2px);
+	transition: transform 34ms;
+}
+// BUTTON SHADOW LAYERS
+.push-btn {
+	position: relative;
+	background: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+.shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+	background: rgba($color: #000000, $alpha: 0.3);
+	transform: translateY(4px);
+}
+.edge {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+	background: hsl(340deg, 100%, 32%);
+}
+.front {
+	display: block;
+	position: relative;
+	// padding: 25px 45px;
+	border-radius: 12px;
+	font-size: 2rem;
+	letter-spacing: 0.15rem;
+	font-family: "Antonio", sans-serif;
+	font-weight: bold;
+	color: white;
+	background: hsl(345deg, 100%, 47%);
+	transform: translateY(-6px);
+	width: 150px;
+	height: 120px;
+}
+
+.push-btn:hover .front {
+	transform: translateY(-8px);
+}
+.push-btn:hover .shadow {
+	transform: translateY(4px);
+}
+.push-btn:active .front {
+	transform: translateY(-2px);
+}
+.push-btn:active .shadow {
+	transform: translateY(-1px);
+}
+
+.push-btn:focus:not(:focus-visible) {
+	outline: none;
+}
+.shadow {
+	filter: blur(3px);
+}
+// EDGE CURVE
+.edge {
+	background: linear-gradient(
+		to left,
+		hsl(340deg, 100%, 16%) 0%,
+		hsl(340deg, 100%, 32%) 8%,
+		hsl(340deg, 100%, 32%) 92%,
+		hsl(340deg, 100%, 16%) 100%
+	);
+}
+// BRIGHTNESS ADJUSTMENT
+.push-btn {
+	transition: filter 600ms;
+}
+.push-btn:hover {
+	transition: filter 250ms;
+	filter: brightness(105%);
+}
+
+// BTN UTILITIES
+.push-btn {
+	-webkit-tap-highlight-color: transparent;
+}
+.push-btn {
+	user-select: none;
+}
+
+/* ########## CONTAINER ########## */
+.container {
+	max-width: 400px;
+	height: 70vh;
+	margin: 0 auto;
+}
+.title-block {
+	margin-bottom: 2rem;
+}
+.grid-wrapper {
+	width: 400px;
+	display: grid;
+
+	grid-template-columns: repeat(3, 1fr);
+	// grid-template-rows: repeat(3, 1fr);
+	grid-auto-flow: row dense;
+	gap: 20px;
+}
